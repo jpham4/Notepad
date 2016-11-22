@@ -133,11 +133,11 @@ public class TextEditor extends JFrame implements ActionListener{
 		edit = new JMenu("Edit");
 		edit.setPreferredSize(new Dimension(55, 30));
 		edit.setFont(new Font("Edit", Font.PLAIN, 25));
-		selectAll = new JMenuItem("Select All");
-		selectAll.addActionListener(this);
-		selectAll.setPreferredSize(new Dimension(150, 30));
-		selectAll.setEnabled(true);
-		selectAll.setFont(new Font("Select All", Font.PLAIN, 25));
+		cut = new JMenuItem("Cut");
+		cut.addActionListener(this);
+		cut.setPreferredSize(new Dimension(150, 30));
+		cut.setEnabled(true);
+		cut.setFont(new Font("Cut", Font.PLAIN, 25));
 		copy = new JMenuItem("Copy");
 		copy.addActionListener(this);
 		copy.setPreferredSize(new Dimension(150, 30));
@@ -148,16 +148,16 @@ public class TextEditor extends JFrame implements ActionListener{
 		paste.setPreferredSize(new Dimension(150, 30));
 		paste.setEnabled(true);
 		paste.setFont(new Font("Paste", Font.PLAIN, 25));
-		cut = new JMenuItem("Cut");
-		cut.addActionListener(this);
-		cut.setPreferredSize(new Dimension(150, 30));
-		cut.setEnabled(true);
-		cut.setFont(new Font("Cut", Font.PLAIN, 25));
+		selectAll = new JMenuItem("Select All");
+		selectAll.addActionListener(this);
+		selectAll.setPreferredSize(new Dimension(150, 30));
+		selectAll.setEnabled(true);
+		selectAll.setFont(new Font("Select All", Font.PLAIN, 25));
 		//Add items to menu
-		edit.add(selectAll);
+		edit.add(cut);
 		edit.add(copy);
 		edit.add(paste);
-		edit.add(cut);
+		edit.add(selectAll);
 	}
 	//method for saving files
 	private void saveFile(File filename){
