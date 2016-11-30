@@ -224,7 +224,7 @@ public class TextEditor extends JFrame implements ActionListener{
 				saveFile(filename);
 		} 
 		else if(event.getSource() == delete)
-			textArea.setText(textArea.getText().replace(textArea.getSelectedText(),""));
+			textArea.replaceSelection("");	
 		else if(event.getSource() == selectAll)
 			textArea.selectAll();
 		else if(event.getSource() == copy)
