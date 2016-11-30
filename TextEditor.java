@@ -72,12 +72,13 @@ public class TextEditor extends JFrame implements ActionListener{
 		return editorWindow;
 	}
 	private JTextArea createTextArea(){
-		textBorder = BorderFactory.createBevelBorder(0, Color.WHITE, Color.WHITE);
+		textBorder = BorderFactory.createBevelBorder(0, Color.YELLOW, Color.YELLOW);
 		textArea = new JTextArea(40, 60);
 		textArea.setEditable(true);
 		textArea.setBorder(BorderFactory.createCompoundBorder(textBorder, BorderFactory.createEmptyBorder(2, 5, 0, 0)));
 		textFont = new Font("Times New Roman", 15, 20);
 		textArea.setFont(textFont);
+		textArea.setBackground(Color.YELLOW);
 		scroll = new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		return textArea;
 	}
@@ -116,17 +117,11 @@ public class TextEditor extends JFrame implements ActionListener{
 		saveAs.setPreferredSize(new Dimension(150, 30));
 		saveAs.setEnabled(true);
 		saveAs.setFont(new Font("Save As", Font.PLAIN, 25));
-		delete = new JMenuItem("Delete");
-		delete.addActionListener(this);
-		delete.setPreferredSize(new Dimension(150, 30));
-		delete.setEnabled(true);
-		delete.setFont(new Font("Delete", Font.PLAIN, 25));
 		//Add items to menu
 		file.add(newFile);
 		file.add(open);
 		file.add(save);
 		file.add(saveAs);
-		file.add(delete);
 	}
 	//adding items to edit menu
 	private void editMenu(){
@@ -148,6 +143,11 @@ public class TextEditor extends JFrame implements ActionListener{
 		paste.setPreferredSize(new Dimension(150, 30));
 		paste.setEnabled(true);
 		paste.setFont(new Font("Paste", Font.PLAIN, 25));
+		delete = new JMenuItem("Delete");
+		delete.addActionListener(this);
+		delete.setPreferredSize(new Dimension(150, 30));
+		delete.setEnabled(true);
+		delete.setFont(new Font("Delete", Font.PLAIN, 25));
 		selectAll = new JMenuItem("Select All");
 		selectAll.addActionListener(this);
 		selectAll.setPreferredSize(new Dimension(150, 30));
@@ -157,6 +157,7 @@ public class TextEditor extends JFrame implements ActionListener{
 		edit.add(cut);
 		edit.add(copy);
 		edit.add(paste);
+		edit.add(delete);
 		edit.add(selectAll);
 	}
 	//method for saving files
@@ -224,7 +225,7 @@ public class TextEditor extends JFrame implements ActionListener{
 				saveFile(filename);
 		} 
 		else if(event.getSource() == delete)
-			textArea.replaceSelection("");	
+			textArea.replaceSelection("");
 		else if(event.getSource() == selectAll)
 			textArea.selectAll();
 		else if(event.getSource() == copy)
